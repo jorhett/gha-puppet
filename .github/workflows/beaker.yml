@@ -80,7 +80,7 @@ jobs:
       puppet_beaker_test_matrix: ${{ steps.get-outputs.outputs.puppet_beaker_test_matrix }}
     env:
       BUNDLE_WITHOUT: development:system_tests:release
-      PUPPET_GEM_VERSION: "~> 7.0"
+      PUPPET_GEM_VERSION: ">= 7.0"
     steps:
       - uses: actions/checkout@v4
       - name: install additional packages
