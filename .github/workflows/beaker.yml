@@ -44,6 +44,11 @@ on:
         default: 'false'
         required: false
         type: string
+      beaker_hosts:
+        description: Expand the Beaker setfile with hosts and roles
+        default: 'false'
+        required: false
+        type: string
       domain:
         description: The domain that will be used for the beaker instances
         default: "example.com"
@@ -102,7 +107,7 @@ jobs:
         if: ${{ inputs.rubocop }}
       - name: Setup Test Matrix
         id: get-outputs
-        run: bundle exec metadata2gha --domain ${{ inputs.domain }} --pidfile-workaround ${{ inputs.pidfile_workaround }} --beaker-facter "${{ inputs.beaker_facter }}"
+        run: bundle exec metadata2gha --domain ${{ inputs.domain }} --pidfile-workaround ${{ inputs.pidfile_workaround }} --beaker-facter "${{ inputs.beaker_facter }}" --beaker-hosts "${{ inputs.beaker_hosts }}"
 
   unit:
     defaults:
